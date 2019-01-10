@@ -1,7 +1,7 @@
 {
   "main.css": "/SearchWaste/static/css/main.54fabee9.chunk.css",
-  "main.js": "/SearchWaste/static/js/main.895090e0.chunk.js",
-  "main.js.map": "/SearchWaste/static/js/main.895090e0.chunk.js.map",
+  "main.js": "/SearchWaste/static/js/main.31ac7c36.chunk.js",
+  "main.js.map": "/SearchWaste/static/js/main.31ac7c36.chunk.js.map",
   "static/css/1.0bfaab5c.chunk.css": "/SearchWaste/static/css/1.0bfaab5c.chunk.css",
   "static/js/1.70324af9.chunk.js": "/SearchWaste/static/js/1.70324af9.chunk.js",
   "static/js/1.70324af9.chunk.js.map": "/SearchWaste/static/js/1.70324af9.chunk.js.map",
@@ -11,6 +11,6 @@
   "static/css/main.54fabee9.chunk.css.map": "/SearchWaste/static/css/main.54fabee9.chunk.css.map",
   "static/css/1.0bfaab5c.chunk.css.map": "/SearchWaste/static/css/1.0bfaab5c.chunk.css.map",
   "index.html": "/SearchWaste/index.html",
-  "precache-manifest.4621a8268acbfda435046f3eed31c00d.js": "/SearchWaste/precache-manifest.4621a8268acbfda435046f3eed31c00d.js",
+  "precache-manifest.62618e1b2fb32ef430665c3ba17f3856.js": "/SearchWaste/precache-manifest.62618e1b2fb32ef430665c3ba17f3856.js",
   "service-worker.js": "/SearchWaste/service-worker.js"
 }
