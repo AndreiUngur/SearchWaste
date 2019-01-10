@@ -24,7 +24,8 @@ class App extends Component {
     this.state = {
       data: [],
       searchResults: [],
-      searchText: ""
+      searchText: "",
+      favourites: 0
     };
   }
 
@@ -43,7 +44,7 @@ class App extends Component {
    * @param {string} text 
    */
   findKeywordsInText(keywords, text){
-    return keywords.split(", ").some(item => text.includes(item)) || text.split(" ").some(item => keywords.includes(item))
+    return keywords.split(", ").some(item => text.includes(item)) //|| text.split(" ").some(item => keywords.includes(item))
   }
 
   /**
@@ -66,12 +67,14 @@ class App extends Component {
    * @param {Object} item 
    */
   manageFavourites(e, item){
-    if (this.state.data[item.index].favorite){ 
+    if (this.state.data[item.index].favourite){ 
       this.state.data[item.index].color = "#000000";
-      this.state.data[item.index].favorite = false;
+      this.state.data[item.index].favourite = false;
+      this.state.favourites -= 1;
     } else {
       this.state.data[item.index].color = "#237e7f";
-      this.state.data[item.index].favorite = true;     
+      this.state.data[item.index].favourite = true;
+      this.state.favourites += 1;
     }
     this.forceUpdate();
   }
@@ -86,13 +89,6 @@ class App extends Component {
     if (event.target.value === ""){
       this.setState({searchResults: []});
     }
-  }
-
-  /**
-   * Returns label for `Favourites` header if favourites exist.
-   */
-  renderFavouritesHeaderText(){
-    return this.state.data.filter(item => item.favorite).length === 0 ? "" : "Favourites";
   }
 
   render() {
@@ -131,7 +127,7 @@ class App extends Component {
 
         <div className="App-favourites">
 
-          <h1 className="App-favourites-header">{this.renderFavouritesHeaderText}</h1>
+          <h1 className="App-favourites-header">{this.state.favourites === 0 ? "" : "Favourites"}</h1>
           {this.state.data.filter(item => item.favourite).map(favourite => {
             return <div class="row result">
                     <div class="col-left">
