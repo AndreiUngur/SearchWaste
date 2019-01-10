@@ -20,6 +20,12 @@
   margin-bottom: 2vh;
 }
 
+.App-favorites-header{
+  color: #237e7f;
+  margin-left: 7%;
+  text-align: left;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -59,6 +65,7 @@
 }
 
 .row{
+  font-size: 20px;
   margin-left: 5%;
   width: 75%;
   display:flex;
@@ -86,6 +93,9 @@ li{
 }
 
 @media only screen and (max-width: 500px){
+  .row{
+    font-size: 16px;
+  }
   .col-right{
     max-height: 150px;
     overflow: scroll;
