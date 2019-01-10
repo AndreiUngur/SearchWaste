@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "04edf1b297bd99c7f89b",
-    "url": "/SearchWaste/static/css/main.7daf96f7.chunk.css"
+    "revision": "895090e0f481da27c421",
+    "url": "/SearchWaste/static/css/main.54fabee9.chunk.css"
   },
   {
-    "revision": "04edf1b297bd99c7f89b",
-    "url": "/SearchWaste/static/js/main.04edf1b2.chunk.js"
+    "revision": "895090e0f481da27c421",
+    "url": "/SearchWaste/static/js/main.895090e0.chunk.js"
   },
   {
     "revision": "70324af9603ffc4b2af4",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/SearchWaste/static/media/fontawesome-webfont.912ec66d.svg"
   },
   {
-    "revision": "38b4df1fc2392f1bb639a5f586bdb30b",
+    "revision": "41fff4125a3e93e77d6433da4e37244f",
     "url": "/SearchWaste/index.html"
   }
 ];
