@@ -35,7 +35,9 @@ class App extends Component {
   componentDidMount() {
     fetch(`https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000`)
     .then(result=>result.json())
-    .then(items=>this.setState({data: items.map((item, index) => {item.index = index; return item;})}))
+    .then(items=>this.setState({data: items.map((item, index) => {item.index = index;
+                                                                  item.color = '#808080';
+                                                                  return item;})}))
   }
 
   /**
@@ -44,7 +46,8 @@ class App extends Component {
    * @param {string} text 
    */
   findKeywordsInText(keywords, text){
-    return keywords.split(", ").some(item => text.includes(item)) //|| text.split(" ").some(item => keywords.includes(item))
+    keywords = keywords.toLocaleLowerCase();
+    return text.toLowerCase().split(" ").some(item => keywords.includes(item)) //|| keywords.split(", ").some(item => text.includes(item)) 
   }
 
   /**
@@ -67,16 +70,17 @@ class App extends Component {
    * @param {Object} item 
    */
   manageFavourites(e, item){
-    if (this.state.data[item.index].favourite){ 
-      this.state.data[item.index].color = "#000000";
-      this.state.data[item.index].favourite = false;
-      this.state.favourites -= 1;
+    let data = this.state.data;
+    if (data[item.index].favourite){ 
+      data[item.index].color = "#808080";
+      data[item.index].favourite = false;
+      this.setState({favourites: this.state.favourites - 1});
     } else {
-      this.state.data[item.index].color = "#237e7f";
-      this.state.data[item.index].favourite = true;
-      this.state.favourites += 1;
+      data[item.index].color = "#008000";
+      data[item.index].favourite = true;
+      this.setState({favourites: this.state.favourites + 1});
     }
-    this.forceUpdate();
+    this.setState({data: data});
   }
 
   /**
@@ -91,6 +95,16 @@ class App extends Component {
     }
   }
 
+  /**
+   * Submits when user presses "Enter"
+   * @param {Object} event
+   */
+  submitOnEnter(event){
+    if (event.key === 'Enter'){
+      this.manageSearch(event);
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -101,24 +115,24 @@ class App extends Component {
 
         <div className="App-searchbar">
 
-          <input text value={this.state.searchText} onChange={(e) => this.manageTextBoxChange(e)} className="App-searchbox"></input>
+          <input value={this.state.searchText} onKeyPress={(e) => this.submitOnEnter(e)} onChange={(e) => this.manageTextBoxChange(e)} className="App-searchbox"></input>
           <Button type="submit" onClick={(e) => this.manageSearch(e)} variant="contained" style={{backgroundColor: "#237e7f", fontSize: '24px'}}>
-            <i class="fa fa-search icon-flipped"></i>
+            <i className="fa fa-search icon-flipped"></i>
           </Button>
 
         </div>
 
         <div className="App-results">
         
-          {this.state.searchResults.map(result => {
-            return <div class="row result">
-                    <div class="col-left">
+          {this.state.searchResults.map((result, index) => {
+            return <div key={index} className="row result">
+                    <div className="col-left">
                       <Button onClick={(e) => this.manageFavourites(e, result)} style={{fontSize: '24px', color: result.color}}>
-                        <i class="fa fa-star"></i>
+                        <i className="fa fa-star"></i>
                       </Button>
-                      <span class="title">{result.title}</span>
+                      <span className="title">{result.title}</span>
                     </div>
-                    <div class="col-right" dangerouslySetInnerHTML={{ __html: escapeHtml(result.body) }}/>
+                    <div className="col-right" dangerouslySetInnerHTML={{ __html: escapeHtml(result.body) }}/>
                   </div>
             })
           }
@@ -128,15 +142,15 @@ class App extends Component {
         <div className="App-favourites">
 
           <h1 className="App-favourites-header">{this.state.favourites === 0 ? "" : "Favourites"}</h1>
-          {this.state.data.filter(item => item.favourite).map(favourite => {
-            return <div class="row result">
-                    <div class="col-left">
+          {this.state.data.filter(item => item.favourite).map((favourite, index) => {
+            return <div key={index} className="row result">
+                    <div className="col-left">
                       <Button onClick={(e) => this.manageFavourites(e, favourite)} style={{fontSize: '24px', color: favourite.color}}>
-                        <i class="fa fa-star"></i>
+                        <i className="fa fa-star"></i>
                       </Button>
-                      <span class="title">{favourite.title}</span>
+                      <span className="title">{favourite.title}</span>
                     </div>
-                    <div class="col-right" dangerouslySetInnerHTML={{ __html: escapeHtml(favourite.body) }}/>
+                    <div className="col-right" dangerouslySetInnerHTML={{ __html: escapeHtml(favourite.body) }}/>
                    </div>
             })
           }
