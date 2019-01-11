@@ -16,6 +16,6 @@ yarn start
 
 # Build
 
-The app has been built and deployed (here through Github Pages)[http://andreiungur.github.io/SearchWaste/].
+The app has been built and deployed [here through Github Pages](http://andreiungur.github.io/SearchWaste/).
 
 However, for a local build, simply run `yarn run deploy`.
