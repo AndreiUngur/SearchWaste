@@ -115,7 +115,7 @@ class App extends Component {
 
         <div className="App-searchbar">
 
-          <input value={this.state.searchText} onKeyPress={(e) => this.submitOnEnter(e)} onChange={(e) => this.manageTextBoxChange(e)} className="App-searchbox"></input>
+          <input placeholder="Space-separated keywords. Examples: takeout, fertilizer, lamp, ..." value={this.state.searchText} onKeyPress={(e) => this.submitOnEnter(e)} onChange={(e) => this.manageTextBoxChange(e)} className="App-searchbox"></input>
           <Button type="submit" onClick={(e) => this.manageSearch(e)} variant="contained" style={{backgroundColor: "#237e7f", fontSize: '24px'}}>
             <i className="fa fa-search icon-flipped"></i>
           </Button>
